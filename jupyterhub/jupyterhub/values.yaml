@@ -100,7 +100,7 @@ hub:
   adminUser: user
   ## @param hub.password Hub Dummy authenticator password
   ##
-  password: ""
+  password: "passwd"
   ## @param hub.services JupyterHub services interacting with the JupyterHub API
   ## ref: https://z2jh.jupyter.org/en/latest/administrator/services.html
   ## e.g:
