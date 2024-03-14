@@ -1788,7 +1788,7 @@ auxiliaryImage:
 ## @param postgresql.service.ports.postgresql PostgreSQL service port
 ##
 postgresql:
-  enabled: false
+  enabled: true
   auth:
     username: bn_jupyterhub
     password: "bn_jupyterhub"
