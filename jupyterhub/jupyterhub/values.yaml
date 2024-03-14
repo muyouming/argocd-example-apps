@@ -1788,7 +1788,7 @@ auxiliaryImage:
 ## @param postgresql.service.ports.postgresql PostgreSQL service port
 ##
 postgresql:
-  enabled: true
+  enabled: false
   auth:
     username: bn_jupyterhub
     password: "bn_jupyterhub"
@@ -1809,10 +1809,10 @@ postgresql:
 ## @param externalDatabase.existingSecretPasswordKey Name of an existing secret key containing the database credentials
 ##
 externalDatabase:
-  host: ""
+  host: "192.168.3.49"
   port: 5432
   user: postgres
-  database: jupyterhub
-  password: "jupyterhub"
+  database: postgres
+  password: "sPfTdeaP36"
   existingSecret: ""
   existingSecretPasswordKey: ""
