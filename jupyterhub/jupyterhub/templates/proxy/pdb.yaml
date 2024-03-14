@@ -1,26 +1,18 @@
-{{- /*
-Copyright VMware, Inc.
-SPDX-License-Identifier: APACHE-2.0
-*/}}
-
-{{- if .Values.proxy.pdb.create -}}
-apiVersion: {{ include "common.capabilities.policy.apiVersion" . }}
+{{- if .Values.proxy.chp.pdb.enabled -}}
+apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: {{ include "jupyterhub.proxy.name" . }}
-  namespace: {{ .Release.Namespace | quote }}
-  {{- $versionLabel := dict "app.kubernetes.io/version" ( include "common.images.version" ( dict "imageRoot" .Values.proxy.image "chart" .Chart ) ) }}
-  {{- $labels := include "common.tplvalues.merge" ( dict "values" ( list .Values.commonLabels $versionLabel ) "context" . ) }}
-  labels: {{- include "common.labels.standard" ( dict "customLabels" $labels "context" $ ) | nindent 4 }}
-    app.kubernetes.io/component: proxy
-  {{- if .Values.commonAnnotations }}
-  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
-  {{- end }}
+  name: {{ include "jupyterhub.proxy.fullname" . }}
+  labels:
+    {{- include "jupyterhub.labels" . | nindent 4 }}
 spec:
-  minAvailable: {{ .Values.proxy.pdb.minAvailable }}
-  maxUnavailable: {{ .Values.proxy.pdb.maxUnavailable }}
-  {{- $podLabels := include "common.tplvalues.merge" ( dict "values" ( list .Values.proxy.podLabels .Values.commonLabels ) "context" . ) }}
+  {{- if not (typeIs "<nil>" .Values.proxy.chp.pdb.maxUnavailable) }}
+  maxUnavailable: {{ .Values.proxy.chp.pdb.maxUnavailable }}
+  {{- end }}
+  {{- if not (typeIs "<nil>" .Values.proxy.chp.pdb.minAvailable) }}
+  minAvailable: {{ .Values.proxy.chp.pdb.minAvailable }}
+  {{- end }}
   selector:
-    matchLabels: {{- include "common.labels.matchLabels" ( dict "customLabels" $podLabels "context" $ ) | nindent 6 }}
-      app.kubernetes.io/component: proxy
+    matchLabels:
+      {{- include "jupyterhub.matchLabels" . | nindent 6 }}
 {{- end }}
