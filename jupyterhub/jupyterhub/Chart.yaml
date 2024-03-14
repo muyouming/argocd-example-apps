@@ -13,15 +13,15 @@ annotations:
 apiVersion: v2
 appVersion: 4.0.2
 dependencies:
-- condition: postgresql.enabled
-  name: postgresql
-  repository: oci://registry-1.docker.io/bitnamicharts
-  version: 14.x.x
-- name: common
-  repository: oci://registry-1.docker.io/bitnamicharts
-  tags:
-  - bitnami-common
-  version: 2.x.x
+# - condition: postgresql.enabled
+#   name: postgresql
+#   repository: oci://registry-1.docker.io/bitnamicharts
+#   version: 14.x.x
+# - name: common
+#   repository: oci://registry-1.docker.io/bitnamicharts
+#   tags:
+#   - bitnami-common
+#   version: 2.x.x
 description: JupyterHub brings the power of notebooks to groups of users. It gives
   users access to computational environments and resources without burdening the users
   with installation and maintenance tasks.
