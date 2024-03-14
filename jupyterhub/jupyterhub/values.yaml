@@ -1811,8 +1811,8 @@ postgresql:
 externalDatabase:
   host: "192.168.3.49"
   port: 5432
-  user: postgres
-  database: postgres
+  user: "postgres"
+  database: "postgres"
   password: "sPfTdeaP36"
   existingSecret: ""
   existingSecretPasswordKey: ""
