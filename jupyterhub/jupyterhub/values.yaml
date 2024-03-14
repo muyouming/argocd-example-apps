@@ -100,7 +100,7 @@ hub:
   adminUser: user
   ## @param hub.password Hub Dummy authenticator password
   ##
-  password: "passwd"
+  password: ""
   ## @param hub.services JupyterHub services interacting with the JupyterHub API
   ## ref: https://z2jh.jupyter.org/en/latest/administrator/services.html
   ## e.g:
@@ -1791,7 +1791,7 @@ postgresql:
   enabled: true
   auth:
     username: bn_jupyterhub
-    password: "bn_jupyterhub"
+    password: ""
     database: bitnami_jupyterhub
     existingSecret: ""
   architecture: standalone
@@ -1813,6 +1813,6 @@ externalDatabase:
   port: 5432
   user: postgres
   database: jupyterhub
-  password: "jupyterhub"
+  password: ""
   existingSecret: ""
   existingSecretPasswordKey: ""
